@@ -1,4 +1,5 @@
 import torch.utils.data
+from torchvision.datasets import ImageFolder
 
 def CreateDataset(opt):
 
@@ -9,6 +10,8 @@ def CreateDataset(opt):
         from data.kitti_data_loader import KITTIDataLoader
         dataset = KITTIDataLoader()
         print("dataset [%s] was created" % (dataset.name()))
+    else:
+        dataset = ImageFolder('./datasets/images')
     dataset.initialize(opt)
     return dataset
 
